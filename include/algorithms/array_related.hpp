@@ -48,5 +48,40 @@ typename Container::value_type max_subarray(const Container& v)
     return max_sum;
 }
 
+///////////////////////////////////////////////////////////////
+// Remove duplicates from int array 
+///////////////////////////////////////////////////////////////
+// Modifies the array such that if there are k unique integers in array arr
+// the first k elements of arr will contain these unique integers.
+// arr is assumed to be sorted.
+// The k unique integers is guaranteed to be sorted.
+// Returns k
+template <class Container>
+size_t remove_dups(Container& arr)
+{
+    if (arr.size() <= 1) {
+        return arr.size();
+    }
+
+    size_t i = 0;
+    size_t j = i + 1;
+
+    while (j < arr.size())
+    {
+        while (j < arr.size() && arr[j] == arr[i]) {
+            ++j;
+        }
+
+        if (j == arr.size()) {
+            break;
+        }
+
+        ++i;
+        std::swap(arr[i], arr[j]);
+        ++j;
+    }
+
+    return i + 1;
+}
 
 } // namespace algos

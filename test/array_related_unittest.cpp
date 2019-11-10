@@ -60,4 +60,33 @@ TEST(max_subarray, many_elements_overcome) {
     EXPECT_EQ(res, 43);
 }
 
+///////////////////////////////////////////////////////////////
+// Maximum Subarray (Kadane)
+///////////////////////////////////////////////////////////////
+TEST(remove_dups, two_elements_same) {
+    std::vector<int> v1({2, 2});
+    int res = remove_dups(v1);
+    EXPECT_EQ(res, 1);
+    EXPECT_EQ(v1[0], 2);
+}
+
+TEST(remove_dups, two_elements_different) {
+    std::vector<int> v1({-2, -1});
+    int res = remove_dups(v1);
+    EXPECT_EQ(res, 2);
+    EXPECT_EQ(v1[0], -2);
+    EXPECT_EQ(v1[1], -1);
+}
+
+TEST(remove_dups, many_elements) {
+    std::vector<int> v1({-2, -1, 3, 4, 4, 4, 5, 7});
+    std::vector<int> unique_vals({-2, -1, 3, 4, 5, 7});
+
+    int res = remove_dups(v1);
+    EXPECT_EQ(res, unique_vals.size());
+    for (size_t i = 0; i < unique_vals.size(); ++i) {
+        EXPECT_EQ(v1[i], unique_vals[i]);
+    }
+}
+
 }
