@@ -25,8 +25,8 @@ TEST(linear_combination, small_int_arrays_false) {
 TEST(linear_combination, small_int_arrays_all_true) {
     std::vector<int> v1({0, 1, 2, 3, 4});
     std::vector<int> v2({5, 7, 9, 10, 31});
-    for (int i = 0; i < v1.size(); ++i) {
-        for (int j = 0; j < v2.size(); ++j) {
+    for (size_t i = 0; i < v1.size(); ++i) {
+        for (size_t j = 0; j < v2.size(); ++j) {
             bool res = linear_combination(v1, v2, 2*v1[i] + 3*v2[j]);  
             EXPECT_TRUE(res);
         }

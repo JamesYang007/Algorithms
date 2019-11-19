@@ -119,7 +119,7 @@ void counting_sort(const Container& source, Container& dest)
     } 
 
     // accumulate counts
-    for (int i = 1; i < counter.size(); ++i) {
+    for (size_t i = 1; i < counter.size(); ++i) {
         counter[i] += counter[i-1];
     }
 

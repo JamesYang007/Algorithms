@@ -51,7 +51,7 @@ TEST(qsort, many_element_sort) {
 
     qsort(v1, v2); 
 
-    for (int i = 0; i < sorted.size(); ++i) {
+    for (size_t i = 0; i < sorted.size(); ++i) {
         EXPECT_EQ(sorted[i], v2[i]);
     }
 }
@@ -70,7 +70,7 @@ TEST(counting_sort, many_element_sort) {
 
     assert(v2.size() == sorted.size());
 
-    for (int i = 0; i < v2.size(); ++i) {
+    for (size_t i = 0; i < v2.size(); ++i) {
         EXPECT_EQ(v2[i], sorted[i]);
     }
 }

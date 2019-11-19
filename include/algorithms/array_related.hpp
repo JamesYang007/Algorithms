@@ -14,7 +14,7 @@ bool linear_combination(A1 const& arr1, A2 const& arr2, typename A1::value_type 
     using value_type = typename A1::value_type;
 
     assert(arr1.size() == arr2.size());
-    int i = 0;
+    size_t i = 0;
     int j = arr1.size() - 1;
     while (i < arr1.size() && j >= 0) {
         value_type lin_comb = 2*arr1[i] + 3*arr2[j];

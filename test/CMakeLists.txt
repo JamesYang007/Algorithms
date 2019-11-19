@@ -1,9 +1,20 @@
-set(GTEST_PATH "~/googletest/googletest")
+set(GTEST_DIR "${PROJECT_SOURCE_DIR}/googletest/googletest")
 
-include_directories(
-    "${GTEST_PATH}/include"
-    "${CMAKE_SOURCE_DIR}/include"
-    )
+add_compile_options(-pthread -isystem ${GTEST_DIR}/include)
 
-add_executable(sort_unittest sort_unittest.cpp)
-target_link_libraries(sort_unittest "${GTEST_PATH}/make/gtest_main.a")
+set(
+    UNITTESTS
+    array_related_unittest
+    sort_unittest
+)
+
+add_library(gtest_main.a STATIC ${GTEST_DIR}/src/gtest-all.cc ${GTEST_DIR}/src/gtest_main.cc)
+target_include_directories(gtest_main.a PRIVATE ${GTEST_DIR})
+
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+foreach( test ${UNITTESTS} )
+    add_executable(${test} ${CMAKE_CURRENT_SOURCE_DIR}/${test}.cpp)
+    target_link_libraries(${test} gtest_main.a)
+    add_test(${test} ${test})
+endforeach()

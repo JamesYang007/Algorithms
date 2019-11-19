@@ -1,12 +1,11 @@
-cmake_minimum_required (VERSION 2.6)
-project (Algorithms)
+cmake_minimum_required (VERSION 3.10)
 
-# The version number.
-set (Algorithms_VERSION_MAJOR 1)
-set (Algorithms_VERSION_MINOR 0)
+project("Algorithms" VERSION 1.0)
 
-# Flags
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++17 -Wextra -pthread -isystem")
-set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lpthread")
+enable_testing()
 
-add_subdirectory(test test)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+add_compile_options(-g -Wall -Werror -Wextra)
+add_subdirectory(${PROJECT_SOURCE_DIR}/test ${PROJECT_BINARY_DIR}/test)
